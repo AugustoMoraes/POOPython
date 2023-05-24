@@ -1,8 +1,8 @@
 class Conta:
     def __init__(self, titular, numero, saldo):
-        self.titular = titular
-        self.numero = numero
-        self.saldo = 0
+        self._titular = titular
+        self._numero = numero
+        self._saldo = 0
 
     def get_titular(self):
         self._titular
@@ -35,3 +35,15 @@ class Conta:
         else:
             self._saldo = saldo
 
+    def saque(self, valor):
+        if(self._saldo >= valor):
+            self._saldo -= valor
+            print("Saque realizado com sucesso!")
+        else:
+            print("Saldo insuficiente")
+
+    def deposita(self, valor):
+        self.saldo = self._saldo + valor
+
+    def extrato(self):
+        print(f"Nome: {self._titular}\nSaldo Atual: {self._saldo}")
